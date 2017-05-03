@@ -95,3 +95,9 @@ country['values'] = ('USA', 'Canada', 'Australia')
 country.grid(row=1,column=0,padx=20)
 '''
 root.mainloop()
+
+'''
+-need to use class for frame
+-add validation for minutes and AM/PM text
+-start on set button
+'''
