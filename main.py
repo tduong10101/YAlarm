@@ -10,42 +10,11 @@ def validateTextInputSize(event):
     global TEXT_MAXINPUTSIZE
     if (event.widget.index(tk.END) > TEXT_MAXINPUTSIZE - 1):
         event.widget.delete(TEXT_MAXINPUTSIZE - 1)
-def hourValidate(P,self):
-    print 123
-    print P
-
-    try:
-        if int(P) < 0:
-            self.after_idle(lambda: self.configure(value="0", validate='focusout'))
-            self.focus_set()
-            return False
-        elif int(P) > 12:
-            self.after_idle(lambda: self.configure(value="12", validate='focusout'))
-            self.focus_set()
-            return False
-        else:
-            return True
-    except ValueError:
-        self.after_idle(lambda: self.configure(value="0", validate='focusout'))
-        self.focus_set()
-        return False
-
 def CalDuration(strDate):
     targetTime = datetime.strptime(strDate, '%d/%m/%Y %H:%M')
     currentDate = datetime.now()
     duration = targetTime - currentDate
     return duration
-
-def main():
-    while True:
-        strDate = raw_input("Please input date:")
-        duration = CalDuration(strDate).total_seconds()
-        if duration > 0:
-            break
-    sleep(int(duration))
-    print duration / 3600
-
-
 '''
 class YAlarm(tk.Frame):
     def __init__(self, parent):
@@ -83,23 +52,22 @@ class YAlarm(tk.Frame):
         self.timeSB.grid(row=2, column=2, padx=20)
 
     def validate (self, P,W,minVal,maxVal):
+        spinbox = self.nametowidget(W)
         try:
             if int(P) < int(minVal):
-                self.nametowidget(W).after_idle(lambda: self.nametowidget(W).configure(value=minVal, validate='focusout'))
+                spinbox.after_idle(lambda: spinbox.configure(value=minVal, validate='focusout'))
                 return False
             elif int(P) > int(maxVal):
                 print maxVal
-                self.nametowidget(W).after_idle(lambda: self.nametowidget(W).configure(value=maxVal, validate='focusout'))
+                spinbox.after_idle(lambda: spinbox.configure(value=maxVal, validate='focusout'))
                 return False
             else:
                 return True
         except ValueError:
-            self.nametowidget(W).after_idle(lambda: self.nametowidget(W).configure(value=minVal, validate='focusout'))
+            spinbox.after_idle(lambda: spinbox.configure(value=minVal, validate='focusout'))
             return False
 
     def validateTime (self, P,W):
-        print P
-        print P is "PM"
         if (P == "AM") or (P == "PM"):
             return True
         else:
@@ -115,25 +83,7 @@ def main():
 
 if __name__ == '__main__':
     main()
-'''
-root = Tk()
-root.resizable(width=False,height=False)
-root.minsize(height=200, width=200)
 
-topFrame = Frame(root)
-topFrame.pack(side=TOP)
-
-title = Label( topFrame,text="YAlarm")
-title.pack(side=TOP)
-
-midFrame = Frame(root)
-midFrame.pack()
-
-hour = Label( midFrame,text="Hour")
-hour.grid(row=0,column=0,padx=20)
-minute = Label( midFrame,text="Minute")
-minute.grid(row=0,column=1,padx=20)
-'''
 '''
 hourT = Entry (midFrame)
 hourT.bind("<Key>", validateTextInputSize)
@@ -150,5 +100,4 @@ minuteSB.grid(row=1,column=1,padx=20)
 
 timeSB = Spinbox(midFrame, value=("AM","PM"),width=4)
 timeSB.grid(row=1,column=2,padx=20)
-
 '''
