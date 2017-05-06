@@ -19,8 +19,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="64" column="28" lean-forward="true" selection-start-line="64" selection-start-column="28" selection-end-line="64" selection-end-column="28" />
+            <state relative-caret-position="-894">
+              <caret line="22" column="30" lean-forward="true" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
               </folding>
@@ -330,7 +330,14 @@
       <option name="project" value="LOCAL" />
       <updated>1494051695821</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added setButton, setAlarm, icon and link entry">
+      <created>1494076910465</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1494076910465</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView">
@@ -410,7 +417,8 @@
     <MESSAGE value="Tidy up comments and spinbox value in validate function&#10;To be working on characters input limit and &quot;set&quot; button" />
     <MESSAGE value="Enable validation for 'all' validate on Hour,Minute and Time spinbox&#10;Tidy up all comments and validation functions" />
     <MESSAGE value="Refined validation, added getAlarm, getDuration functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refined validation, added getAlarm, getDuration functions" />
+    <MESSAGE value="Added setButton, setAlarm, icon and link entry" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added setButton, setAlarm, icon and link entry" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -466,8 +474,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="64" column="28" lean-forward="true" selection-start-line="64" selection-start-column="28" selection-end-line="64" selection-end-column="28" />
+        <state relative-caret-position="-894">
+          <caret line="22" column="30" lean-forward="true" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
           </folding>

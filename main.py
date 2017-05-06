@@ -3,6 +3,7 @@ from time import *
 import os
 import thread
 import Tkinter as tk
+import webbrowser
 duration = 0
 
 class YAlarm(tk.Frame):
@@ -57,13 +58,18 @@ class YAlarm(tk.Frame):
         minute = int(self.minuteText.get())
         time = self.timeSB.get()
         duration = self.getDuration(hour,minute,time)
-        thread.start_new_thread(self.setAlarm, (duration,hour,minute,time))
+        link = self.linkEnt.get()
+        thread.start_new_thread(self.setAlarm, (duration,link))
         print duration
         return True
 
-    def setAlarm(self,duration,hour,minute,time):
+    def setAlarm(self,duration,link):
         sleep(int(duration))
-        print "Wake up time!!!!!!!!!!! it's {0}:{1} {2}".format(hour,minute,time)
+        if link:
+            webbrowser.open(link,2)
+        else:
+            link = "https://youtu.be/WVP3fUzQHcg"
+            webbrowser.open(link, 2)
 
     def getDuration(self,hour,minute,time):
         if time == "PM":
