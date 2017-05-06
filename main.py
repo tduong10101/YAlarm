@@ -1,8 +1,8 @@
 from datetime import *
 from time import *
+import os
 import thread
 import Tkinter as tk
-import ttk
 duration = 0
 
 class YAlarm(tk.Frame):
@@ -41,9 +41,17 @@ class YAlarm(tk.Frame):
         self.timeSB = tk.Spinbox(self, value=("AM", "PM"), width=4, validate='all',validatecommand=self.vTimecmd)
         self.timeSB.grid(row=2, column=2, padx=20)
 
+        # Add link entry and label
+        self.linkLbl = tk.Label(self, text="Link:")
+        self.linkLbl.grid(row=3, column=0)
+
+        self.linkEnt = tk.Entry(self)
+        self.linkEnt.grid(row=4, column=0, columnspan=3, sticky="WE", padx=15)
+
         #Add set button
         self.setButton = tk.Button(self, text='Set',command=self.setButton,width=8)
-        self.setButton.grid(row=3, column=2,pady=5)
+        self.setButton.grid(row=5, column=2,pady=10)
+
     def setButton(self):
         hour = int(self.hourText.get())
         minute = int(self.minuteText.get())
@@ -106,11 +114,27 @@ class YAlarm(tk.Frame):
         else:
             return True
 
-
 def main():
     root=tk.Tk()
-    root.geometry("250x150+300+300")
-    meh = YAlarm(root)
+    dir = os.path.dirname(__file__)
+    print dir+"/Resources/clock.ico"
+    fn = dir+"/Resources/clock.ico"
+    root.iconbitmap(fn)
+
+    w = 250  # width for the Tk root
+    h = 150  # height for the Tk root
+
+    # get screen width and height
+    ws = root.winfo_screenwidth()  # width of the screen
+    hs = root.winfo_screenheight()  # height of the screen
+
+    # calculate x and y coordinates for the Tk root window
+    x = (ws / 2) - (w / 2)
+    y = (hs / 2) - (h / 2)
+
+    root.geometry('%dx%d+%d+%d' % (w, h, x, y))
+    root.resizable(width=False, height=False)
+    YAlarm(root)
     root.mainloop()
 
 if __name__ == '__main__':
