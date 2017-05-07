@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0294b5e8-f907-4304-b781-1c1ac48e8170" name="Default" comment="Upload icon and image files">
+    <list default="true" id="0294b5e8-f907-4304-b781-1c1ac48e8170" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -368,7 +368,14 @@
       <option name="project" value="LOCAL" />
       <updated>1494153433287</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Upload icon and image files">
+      <created>1494153721828</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1494153721828</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TodoView">
@@ -450,9 +457,9 @@
     <MESSAGE value="Refined validation, added getAlarm, getDuration functions" />
     <MESSAGE value="Added setButton, setAlarm, icon and link entry" />
     <MESSAGE value="Completed link entry/setalarm function" />
-    <MESSAGE value="Upload icon and image files" />
     <MESSAGE value="Added try/exception for input link" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added try/exception for input link" />
+    <MESSAGE value="Upload icon and image files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Upload icon and image files" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
