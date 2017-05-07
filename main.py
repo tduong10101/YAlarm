@@ -23,8 +23,8 @@ class YAlarm(tk.Frame):
         self.hourText.set("0")
         minVal = 0
         maxVal = 12
-        vHourscmd = (self.register(self.validate),'%d','%P','%W', minVal, maxVal)
-        self.hourSB = tk.Spinbox(self, textvariable=self.hourText, from_=minVal, to=maxVal, width=3, validate="all",validatecommand=vHourscmd)
+        self.vHourscmd = (self.register(self.validate),'%d','%P','%W', minVal, maxVal)
+        self.hourSB = tk.Spinbox(self, textvariable=self.hourText, from_=minVal, to=maxVal, width=3, validate="all",validatecommand=self.vHourscmd)
         self.hourSB.grid(row=2, column=0, padx=20)
 
         #set minute spinbox and label
