@@ -4,6 +4,7 @@ import os
 import thread
 import Tkinter as tk
 import webbrowser
+import urllib
 duration = 0
 
 class YAlarm(tk.Frame):
@@ -59,17 +60,20 @@ class YAlarm(tk.Frame):
         time = self.timeSB.get()
         duration = self.getDuration(hour,minute,time)
         link = self.linkEnt.get()
-        thread.start_new_thread(self.setAlarm, (duration,link))
+        test = thread.start_new_thread(self.setAlarm, (duration,link))
+        print test
         print duration
         return True
 
     def setAlarm(self,duration,link):
         sleep(int(duration))
-        if link:
-            webbrowser.open(link,2)
-        else:
+        if not link:
             link = "https://youtu.be/WVP3fUzQHcg"
-            webbrowser.open(link, 2)
+        try:
+            urllib.urlopen(link)
+        except:
+            link = "https://youtu.be/WVP3fUzQHcg"
+        webbrowser.open(link, 2)
 
     def getDuration(self,hour,minute,time):
         if time == "PM":
