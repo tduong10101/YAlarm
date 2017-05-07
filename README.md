@@ -6,7 +6,7 @@ If there's no link supply or link error, YAlarm will open this [youtube video](h
 
 If time set is already past, YAlarm will set the time for next day
 
-![alt text](https://github.com/tduong10101/YAlarm/tree/master/Resources/YAlarm.jpg)
+![alt text](https://github.com/tduong10101/YAlarm/blob/master/Resources/YAlarm.JPG)
 
 ### Prerequires
 Python 2.7
