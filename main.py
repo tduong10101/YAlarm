@@ -5,6 +5,8 @@ import thread
 import Tkinter as tk
 import webbrowser
 import urllib
+import urllib2
+import BeautifulSoup as bs
 duration = 0
 
 class YAlarm(tk.Frame):
@@ -51,32 +53,53 @@ class YAlarm(tk.Frame):
         self.linkEnt.grid(row=4, column=0, columnspan=3, sticky="WE", padx=15)
 
         #Add set button
-        self.setButton = tk.Button(self, text='Set',command=self.setButton,width=8)
+        self.setButton = tk.Button(self, text='Set',command=self.setBtt,width=8)
         self.setButton.grid(row=5, column=2,pady=10)
 
-    def setButton(self):
+        #Add list box
+        self.alarmLbl = tk.Label(self,text="Alarm List:")
+        self.alarmLbl.grid(row=6,column=0)
+        self.alarmLst = tk.Listbox(self,height=5)
+        self.alarmLst.grid(row=7, column=0, columnspan=3,sticky="WE", padx=10)
+
+        #Add alarm list array
+        self.alarmVar = []
+
+    def setBtt(self):
         hour = int(self.hourText.get())
+        print hour
         minute = int(self.minuteText.get())
         time = self.timeSB.get()
         duration = self.getDuration(hour,minute,time)
         link = self.linkEnt.get()
-        test = thread.start_new_thread(self.setAlarm, (duration,link))
-        print test
+        targetTime = "{}:{} {}".format(hour,minute,time)
+        thread.start_new_thread(self.setAlarm, (duration,link,targetTime))
         print duration
         return True
 
-    def setAlarm(self,duration,link):
-        sleep(int(duration))
+    def setAlarm(self,duration,link,targetTime):
         if not link:
             link = "https://youtu.be/WVP3fUzQHcg"
         try:
-            urllib.urlopen(link)
+            url = urllib2.urlopen(link)
         except:
             link = "https://youtu.be/WVP3fUzQHcg"
+            url = urllib2.urlopen(link)
+        soup = bs.BeautifulSoup(url)
+
+        try:
+            wTitle = soup.find('span', id="eow-title").getText()
+        except:
+            wTitle = link
+        threadId = thread.get_ident()
+        self.alarmVar.append([threadId,targetTime,link])
+        self.alarmLst.insert(tk.END,'{} - {} - {}'.format(len(self.alarmVar),targetTime,wTitle.encode('utf-8')))
+
+        sleep(int(duration))
         webbrowser.open(link, 2)
 
     def getDuration(self,hour,minute,time):
-        if time == "PM":
+        if time == "PM" and int(hour)<12:
             newhour = int(hour)+12
         else:
             newhour = int(hour)
@@ -89,8 +112,6 @@ class YAlarm(tk.Frame):
         if targetTime < currentDate:
             targetTime += timedelta(days=1)
         duration = targetTime - currentDate
-
-
         return duration.total_seconds()
 
     def validate (self,d,P,W,minVal,maxVal):
@@ -117,6 +138,9 @@ class YAlarm(tk.Frame):
                 value = ("AM", "PM")
             elif S.lower() == "p":
                 value = ("PM", "AM")
+                print self.hourSB
+                if int(self.hourSB.get()) == 0:
+                    self.hourSB.configure(value=12,validate='all')
             else:
                 return False
             spinbox.after_idle(lambda: spinbox.configure(value=value, validate='all'))
@@ -132,7 +156,7 @@ def main():
     root.iconbitmap(fn)
 
     w = 250  # width for the Tk root
-    h = 150  # height for the Tk root
+    h = 240  # height for the Tk root
 
     # get screen width and height
     ws = root.winfo_screenwidth()  # width of the screen
