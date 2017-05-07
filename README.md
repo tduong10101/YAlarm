@@ -11,7 +11,7 @@ If time set is already past, YAlarm will set the time for next day
 ### Prerequires
 Python 2.7 - 'BeautifulSoup', 'Tkinter', 'datetime', 'os', 'thread', 'time', 'urllib2', 'webbrowser'
 
-### Instalation:
+### Installation:
 Download whole repository and run main.py
 
 ### Work in progress:
