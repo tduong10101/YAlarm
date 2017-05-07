@@ -9,13 +9,11 @@ If time set is already past, YAlarm will set the time for next day
 ![alt text](https://github.com/tduong10101/YAlarm/blob/master/Resources/YAlarm.JPG)
 
 ### Prerequires
-Python 2.7
+Python 2.7 - 'BeautifulSoup', 'Tkinter', 'datetime', 'os', 'thread', 'time', 'urllib2', 'webbrowser'
 
 ### Instalation:
 Download whole repository and run main.py
 
 ### Work in progress:
-- List of set alarms
-- Cancle option
+- Remove Alarm feature
 - Installion/Exe file
-- Catching link error
