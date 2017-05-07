@@ -14,7 +14,7 @@ Python 2.7
 ### Instalation:
 Download whole repository and run main.py
 
-### In-Process:
+### Work in progress:
 - List of set alarms
 - Cancle option
 - Installion/Exe file
