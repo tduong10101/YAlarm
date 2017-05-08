@@ -16,4 +16,5 @@ Download whole repository and run main.py
 
 ### Work in progress:
 - Remove Alarm feature
+- Remove Alarm from list after it trigerred
 - Installion/Exe file
