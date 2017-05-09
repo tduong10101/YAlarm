@@ -4,10 +4,8 @@ import os
 import thread
 import Tkinter as tk
 import webbrowser
-import urllib
 import urllib2
 import BeautifulSoup as bs
-duration = 0
 
 class YAlarm(tk.Frame):
     def __init__(self, parent):
@@ -62,6 +60,9 @@ class YAlarm(tk.Frame):
         self.alarmLst = tk.Listbox(self,height=5)
         self.alarmLst.grid(row=7, column=0, columnspan=3,sticky="WE", padx=10)
 
+        #Remove Alarm button
+        self.rmvBtt = tk.Button(self,text="Delete",command=lambda lst=self.alarmLst: lst.delete(tk.ACTIVE),width=8)
+        self.rmvBtt.grid(row=8,column=2,pady=10)
         #Add alarm list array
         self.alarmVar = []
 
@@ -97,6 +98,8 @@ class YAlarm(tk.Frame):
 
         sleep(int(duration))
         webbrowser.open(link, 2)
+        self.alarmLst.delete(tk.END)
+
 
     def getDuration(self,hour,minute,time):
         if time == "PM" and int(hour)<12:
@@ -104,7 +107,7 @@ class YAlarm(tk.Frame):
         else:
             newhour = int(hour)
         targetTime = datetime.now()
-        targetTime = targetTime.replace(hour=newhour, minute=int(minute),second=0)
+        targetTime = targetTime.replace(hour=newhour, minute=int(minute), second=0)
         currentDate = datetime.now()
         print targetTime
         print currentDate
@@ -155,8 +158,8 @@ def main():
     fn = dir+"/Resources/clock.ico"
     root.iconbitmap(fn)
 
-    w = 250  # width for the Tk root
-    h = 240  # height for the Tk root
+    w = 240  # width for the Tk root
+    h = 280  # height for the Tk root
 
     # get screen width and height
     ws = root.winfo_screenwidth()  # width of the screen
