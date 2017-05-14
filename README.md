@@ -13,6 +13,3 @@ Python 2.7 - 'BeautifulSoup', 'Tkinter', 'datetime', 'os', 'thread', 'time', 'ur
 
 ### Installation
 Download whole repository and run main.py
-
-### Work in progress
-- Installion/Exe file
